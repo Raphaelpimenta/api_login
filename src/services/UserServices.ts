@@ -1,19 +1,32 @@
+export interface User {
+    name: string,
+    email: string
+}
+
 const db = [
     {
-        "name": "Pimenta",
-        "email": "pimentas@teste.com"
+        "name": "Raphael",
+        "email": "rapha@teste.com"
     }
 ]
 //Manipulando o banco de dados (database)
 export class UserServices {
+    db: User[]
+
+    constructor(
+        database = db
+    ){
+        this.db = database
+    }
+
     createUser = (name: string, email: string) => {
         const user = {
             name,
             email
         }
 
-        db.push(user)
-        console.log('db atualizado...', db)
+        this.db.push(user)
+        console.log('Database atualizado', this.db)
     }
 
 
